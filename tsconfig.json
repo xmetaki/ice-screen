@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "allowJs": true,
+        // "rootDir": "src",
+        "lib": ["DOM","ESNext"],
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+    },
+}

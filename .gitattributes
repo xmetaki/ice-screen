@@ -1,0 +1,2 @@
+# 禁止windows下Git策略产生的CRLF转换
+* text=auto eol=lf

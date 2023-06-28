@@ -1,0 +1,35 @@
+{
+  "name": "@xmetaki/ice-screen",
+  "version": "0.0.1",
+  "description": "A Library for web screenshot",
+  "main": "index.js",
+  "scripts": {
+    "play": "vite --config examples/vite.config.ts "
+  },
+  "keywords": [
+    "screenshot",
+    "web screenshot",
+    "ice-screen",
+    "xmetaki"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/xmetaki/ice-screen/issues"
+  },
+  "engines": {
+    "node": ">= 16"
+  },
+  "author": "xmetaki",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/fabric": "^5.3.3",
+    "typescript": "^5.1.5",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "fabric": "5.3.0",
+    "lit-html": "^2.7.4"
+  }
+}
