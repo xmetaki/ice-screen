@@ -57,6 +57,6 @@ export class Menu {
                 </span>
             </div>
         ` : nothing
-        render(template, document.body)
+        render(template, document.getElementById("lit-html__container"))
     }
 }

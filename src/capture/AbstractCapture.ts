@@ -55,11 +55,12 @@ export abstract class AbstractCapture implements ICapture{
     abstract transform(dataUrl: string): Promise<fabric.Image>;
     abstract paint(img: fabric.Image): void;
     abstract export(): ExportType;
-
+    async init(source: SourceType) {
+        const parsed = this.parse(source)
+        const image = await this.transform(parsed)
+        this.paint(image)
+    }
     async capture(source: SourceType) {
-       const parsed = this.parse(source)
-       const image = await this.transform(parsed)
-       this.paint(image)
        const output = this.export()
        return output
     }

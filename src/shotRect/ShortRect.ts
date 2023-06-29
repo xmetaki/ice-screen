@@ -76,7 +76,6 @@ export class ShortRect {
         const { canvas, capturer, options: { input } } = this.getContext()
         canvas.on("mouse:up", (e) => {
             if (!this.isDrawing) return
-
             /**处理误触问题 */
             if (this.rect.width < 1 || this.rect.height < 1) {
                 this.destoryRect()

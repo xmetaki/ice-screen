@@ -7,8 +7,10 @@ body {
     z-index: 20000;
     position: absolute !important;
 }
-.screen_menu {
+#lit-html__container {
     z-index: 20001;
+}
+.screen_menu {
     height: 40px;
     background-color: #fff;
     width: 200px;
@@ -29,6 +31,7 @@ body {
     border-radius: 5px;
 }
 .screen_menu > span:nth-child(1):hover {
+    cursor: not-allowed;
     background:#ece4ff;
 }
 .screen_menu > span:nth-child(2):hover {

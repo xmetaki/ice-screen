@@ -15,12 +15,14 @@ export class PaintContext {
     canvasDom: HTMLCanvasElement
     options: PaintOptions
     capturer: AbstractCapture
+    resizeEvent: Function
     successCb: (t: ExportType) => void = () => {}
     constructor(options: Partial<PaintOptions>) {
         this.initOptions(options)
         this.initDom()
         this.initCanvas()
         this.capturer = new BaseCapture(this)
+        this.capturer.init(options.input)
         this.shortRect = new ShortRect(this)
     }
 
@@ -32,8 +34,18 @@ export class PaintContext {
         this.options = Object.assign(paintOption, options)
     }
     beforeDestory() {
-        if (this.canvasDom) {
-            document.body.removeChild(this.canvasDom)
+        const canvasDom = document.getElementById("ice-dom")
+        if (canvasDom) {
+            document.body.removeChild(canvasDom)
+        }
+
+        const templateDom = document.getElementById("lit-html__container")
+        if (templateDom) {
+            document.body.removeChild(templateDom)
+        }
+
+        if (this.resizeEvent) {
+            window.removeEventListener('resize', this.resizeEvent as EventListener)
         }
     }
     private initDom() {
@@ -41,6 +53,12 @@ export class PaintContext {
         canvasDom.id = "ice-dom"
         document.body.appendChild(canvasDom)
         this.canvasDom = canvasDom
+
+        if (!document.getElementById("lit-html__container")) {
+           const dom = document.createElement("div")
+           dom.id = 'lit-html__container'
+           document.body.appendChild(dom)
+        }
     }
     private initCanvas() {
         const canvas = new fabric.Canvas(this.canvasDom, {
@@ -52,5 +70,13 @@ export class PaintContext {
             canvas.renderAll()
         })
         this.canvas = canvas
+        this.resizeEvent = () => {
+            console.log('动态')
+            this.canvas.setWidth(window.innerWidth)
+            this.canvas.setHeight(window.innerHeight)
+            this.canvas.renderAll()
+        }
+        window.addEventListener('resize', this.resizeEvent as EventListener)
     }
+
 }

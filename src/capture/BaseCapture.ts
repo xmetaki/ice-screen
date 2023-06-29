@@ -34,6 +34,7 @@ export class BaseCapture extends AbstractCapture{
         top: canvas.height / 2 - img.height / 2
        })
        canvas.add(img)
+
        /**增加鼠标滚轮放缩效果 */
        canvas.on("mouse:wheel", (opt) => {
         const delta = opt.e.deltaY * -1;
@@ -58,12 +59,13 @@ export class BaseCapture extends AbstractCapture{
        const { canvas, shortRect: {rect}} = this.getContext()
        const oldWidth = rect.get("strokeWidth")
        rect.set('strokeWidth', 0)
+       canvas.renderAll()
        const url = canvas.toDataURL({
         format: 'png',
         left: rect.left,
         top: rect.top,
-        width: rect.width,
-        height: rect.height
+        width: rect.getScaledWidth(),
+        height: rect.getScaledHeight()
        })
        rect.set('strokeWidth', oldWidth)
        return url
