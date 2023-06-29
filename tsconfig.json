@@ -8,5 +8,6 @@
         "lib": ["DOM","ESNext"],
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
+        "resolveJsonModule": true
     },
 }

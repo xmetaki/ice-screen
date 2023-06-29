@@ -45,8 +45,16 @@ export class Menu {
     render() {
         const template = this.isShow ? html`
             <div style=${styleMap(this.styles)} class="screen_menu">
-                <span @click=${this.handleClose.bind(this)}>关闭</span>
-                <span @click=${this.handleConfirm.bind(this)}>确认</span>
+                <span>
+                    <i class="gg-edit-markup"></i>
+                </span>
+                <span @click=${this.handleClose.bind(this)}>
+                    <i class="gg-close-o"></i>
+                </span>
+
+                <span @click=${this.handleConfirm.bind(this)}>
+                    <i class="gg-check-o"></i>
+                </span>
             </div>
         ` : nothing
         render(template, document.body)
