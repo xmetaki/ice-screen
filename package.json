@@ -1,6 +1,6 @@
 {
   "name": "@xmetaki/ice-screen",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Library for web screenshot",
   "main": "./dist/cjs/index.js",
   "module": "./dist/es/index.js",
