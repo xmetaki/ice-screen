@@ -1,2 +1,4 @@
 import "./styles/index.css"
-export * from "./context/PaintContext"
+import { PaintContext } from "./context/PaintContext"
+const IceScreen = PaintContext
+export default IceScreen

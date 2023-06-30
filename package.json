@@ -1,10 +1,33 @@
 {
   "name": "@xmetaki/ice-screen",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A Library for web screenshot",
-  "main": "index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./es/*": "./dist/es/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "play": "vite --config examples/vite.config.ts "
+    "play": "vite --config examples/vite.config.ts ",
+    "build": "vite build && pnpm run build:umd",
+    "build:umd": "vite build --config vite.config.umd.ts",
+    "pub:local": "pnpm publish --no-git-checks --registry http://localhost:4873/",
+    "pub:remote": "pnpm publish --no-git-checks --registry https://registry.npmjs.org/",
+    "gen:version": "standard-version && git push --follow-tags origin main",
+    "release": "pnpm run build && pnpm run pub:remote"
   },
   "keywords": [
     "screenshot",
@@ -24,13 +47,16 @@
   "author": "xmetaki",
   "license": "MIT",
   "devDependencies": {
-    "@types/fabric": "^5.3.3",
     "consola": "^3.2.2",
+    "standard-version": "^9.5.0",
     "typescript": "^5.1.5",
     "vite": "^4.3.9",
+    "vite-plugin-css-injected-by-js": "^3.1.2",
+    "vite-plugin-dts": "^3.0.0",
     "vite-plugin-style-import": "^2.0.0"
   },
   "dependencies": {
+    "@types/fabric": "^5.3.3",
     "fabric": "5.3.0",
     "lit-html": "^2.7.4"
   }

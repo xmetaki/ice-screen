@@ -4,10 +4,13 @@
         "module": "ESNext",
         "moduleResolution": "Bundler",
         "allowJs": true,
-        // "rootDir": "src",
         "lib": ["DOM","ESNext"],
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
     },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }
