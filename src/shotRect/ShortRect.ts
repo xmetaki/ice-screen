@@ -85,6 +85,11 @@ export class ShortRect {
             const menu = this.menu = new Menu({
                 "closeFn": () => {
                     this.destoryRect()
+                    canvas.dispose()
+                    this.getContext().beforeDestory()
+                },
+                "backspaceFn": () => {
+                    this.destoryRect()
                 },
                 "confirmFn": () => {
                     capturer.capture(input).then(res => {

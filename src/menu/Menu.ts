@@ -3,18 +3,24 @@ import { styleMap } from 'lit-html/directives/style-map.js'
 export interface MenuOption {
     closeFn: Function,
     confirmFn: Function,
+    backspaceFn: Function,
     styles?: Record<string,any>
 }
 
 export class Menu {
     styles: Record<string, any> = {}
-    _innerHandleClose: Function
-    _innerHandleConfirm: Function
+    private preHandleClose: Function
+    private preHandleBackspace: Function
+    private preHandleConfirm: Function
+
+
     isShow: boolean = false
     
     constructor(options: MenuOption) {
-        this._innerHandleClose = options.closeFn
-        this._innerHandleConfirm = options.confirmFn
+        
+        this.preHandleClose = options.closeFn
+        this.preHandleBackspace = options.backspaceFn
+        this.preHandleConfirm = options.confirmFn
         if (options.styles) {
             this.styles = options.styles
         }
@@ -30,11 +36,15 @@ export class Menu {
         this.render()
     }
     handleClose() {
-        this._innerHandleClose()
+        this.preHandleClose()
         this.close()
     }
     handleConfirm () {
-        this._innerHandleConfirm()
+        this.preHandleConfirm()
+        this.close()
+    }
+    handleBackspace() {
+        this.preHandleBackspace()
         this.close()
     }
     updateStyle(style: Record<string, any>) {
@@ -45,14 +55,17 @@ export class Menu {
     render() {
         const template = this.isShow ? html`
             <div style=${styleMap(this.styles)} class="screen_menu">
-                <span>
+                <span title="暂不支持">
                     <i class="gg-edit-markup"></i>
                 </span>
-                <span @click=${this.handleClose.bind(this)}>
+                <span @click=${this.handleBackspace.bind(this)} title="重绘">
+                    <i class="gg-log-out"></i>
+                </span>
+                <span @click=${this.handleClose.bind(this)} title="关闭">
                     <i class="gg-close-o"></i>
                 </span>
 
-                <span @click=${this.handleConfirm.bind(this)}>
+                <span @click=${this.handleConfirm.bind(this)} title="确认">
                     <i class="gg-check-o"></i>
                 </span>
             </div>

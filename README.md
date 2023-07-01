@@ -3,7 +3,7 @@ A class library for web screenshots
 
 ## 演示效果 | Demo
 
-![录屏效果](./screenshot.gif)
+![录屏效果](https://cdn.jsdelivr.net/gh/xmetaki/ice-screen/screenshot.gif)
 
 ## 使用方法 | Usage
 
