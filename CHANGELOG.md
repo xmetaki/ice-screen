@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/xmetaki/ice-screen/compare/v0.0.4...v0.0.5) (2023-07-01)
+
+
+### ✨ Features | 新功能
+
+* 支持重绘 调整关闭功能 ([3239124](https://github.com/xmetaki/ice-screen/commit/3239124e9fb2c766ec776079fe6bfe8e09dfe054))
+
 ### 0.0.4 (2023-06-30)
 
 
