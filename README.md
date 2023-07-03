@@ -8,7 +8,9 @@ A class library for web screenshots
 ## 使用方法 | Usage
 
 ### 导入 | Import
-```sh
+
+#### 模块化导入
+```bash
 #pnpm
 pnpm add @xmetaki/ice-screen 
 #npm
@@ -16,6 +18,12 @@ npm install @xmetaki/ice-screen
 #yarn
 yarn add @xmetaki/ice-screen
 ```
+#### 标签导入
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@xmetaki/ice-screen/dist/umd/index.js"></script>
+```
+
 ### 业务代码使用 | Experience
 
 ```javascript
